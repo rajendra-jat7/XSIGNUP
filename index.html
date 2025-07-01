@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Newsletter Signup</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="main">
+    <div class="sign-up-form">
+      <div class="left-section">
+        <h1>Stay updated!</h1>
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <ul class="custom-list">
+          <li>
+            <img src="assets/images/icon-list.svg" alt="tick" />
+            Product discovery and building what matters
+          </li>
+          <li>
+            <img src="assets/images/icon-list.svg" alt="tick" />
+            Measuring to ensure updates are a success
+          </li>
+          <li>
+            <img src="assets/images/icon-list.svg" alt="tick" />
+            And much more!
+          </li>
+        </ul>
+
+        <form id="subscription-form" novalidate>
+          <div class="input-label-wrap">
+            <label for="email"><strong>Email Address</strong></label>
+            <em class="error-message" style="display: none"
+              >Valid email required.</em
+            >
+          </div>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="email@company.com"
+            required
+          />
+
+          <button type="submit" class="sub-btn">
+            Subscribe to monthly newsletter
+          </button>
+        </form>
+      </div>
+
+      <div class="right-section">
+        <img
+          src="assets/images/illustration-sign-up-desktop.svg"
+          alt="Illustration"
+          class="desktop-img"
+        />
+        <img
+          src="assets/images/illustration-sign-up-mobile.svg"
+          alt="Illustration"
+          class="mobile-img"
+        />
+      </div>
+    </div>
+
+    <footer class="footer">
+      Challenge by
+      <a
+        href="https://www.crio.do"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="tag"
+        >CrioDo</a
+      >. Coded by
+      <a
+        href="https://github.com/ImKetan1610"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="tag"
+        >Akash KT.</a
+      >
+    </footer>
+
+    <script>
+      const form = document.getElementById('subscription-form');
+      const emailInput = document.getElementById('email');
+      const errorMessage = document.querySelector('.error-message');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!isValid) {
+          errorMessage.style.display = 'block';
+          emailInput.classList.add('invalid-input');
+          return;
+        }
+
+        errorMessage.style.display = 'none';
+        emailInput.classList.remove('invalid-input');
+
+        localStorage.setItem('subscribedEmail', email);
+        window.location.href = 'success.html';
+      });
+
+      emailInput.addEventListener('input', () => {
+        const email = emailInput.value.trim();
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (isValid) {
+          errorMessage.style.display = 'none';
+          emailInput.classList.remove('invalid-input');
+        }
+      });
+    </script>
+  </body>
+</html>

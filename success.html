@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Success</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="thanks-for-sub">
+    <div class="success-box">
+      <img
+        src="assets/images/icon-success.svg"
+        alt="Success"
+        class="top-success-icon"
+      />
+      <h1>Thanks for subscribing!</h1>
+      <p>
+        A confirmation email has been sent to
+        <span class="success-text">email@test.com</span>. Please open it and
+        click the button inside to confirm your subscription.
+      </p>
+      <button class="dismiss-btn">Dismiss message</button>
+    </div>
+
+    <footer class="footer">
+      Challenge by
+      <a
+        href="https://www.crio.do"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="tag"
+        >CrioDo</a
+      >. Coded by
+      <a
+        href="https://github.com/ImKetan1610"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="tag"
+        >Ketan.</a
+      >
+    </footer>
+
+    <script>
+      document.querySelector('.dismiss-btn').addEventListener('click', () => {
+        window.location.href = 'index.html';
+      });
+
+      const email = localStorage.getItem('subscribedEmail');
+      if (email) {
+        document.querySelector('.success-text').textContent = email;
+      }
+    </script>
+  </body>
+</html>
